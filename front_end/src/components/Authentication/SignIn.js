@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 
 
 export default class SignIn extends Component {
+
+    backend_url = 'http://localhost:3000'
    
     state={
         username: "",
@@ -20,7 +22,7 @@ export default class SignIn extends Component {
         event.preventDefault();
         console.log(this.state);
 
-        fetch(`http://13.58.204.144:3001/users/login`,{
+        fetch(`${this.backend_url}/users/login`,{
             method: 'POST',
             headers: {
                 "Authorization": "token_go",

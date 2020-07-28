@@ -27,6 +27,8 @@ class App extends React.Component {
                   token: null
         }
 
+        backend_url = 'http://localhost:3000'
+
 
         setUser= (user, token) =>{
                 this.setState({ 
@@ -40,16 +42,13 @@ class App extends React.Component {
 
 
         componentDidMount(){
-                const url = "http://13.58.204.144:3001"
-
-                fetch(`http://13.58.204.144:3001/products`)
+                fetch(`${this.backend_url}/products`)
                     .then(r => r.json())
                     .then(data => { this.setState({ products: data, displayProducts: data }) })         
         }
 
         makeNewProduct = (newProduct) => {
-                const url = "http://13.58.204.144:3000"
-                fetch(`http://13.58.204.144:3001/products`, 
+                fetch(`${this.backend_url}/products`, 
                 {
                 method: 'POST',
                 headers: {
@@ -76,9 +75,7 @@ class App extends React.Component {
         }
 
         deleteProduct =(id)=>{
-                const url = "http://13.58.204.144:3000"
-
-                fetch(`http://13.58.204.144:3001/products/${id}`, {
+                fetch(`${this.backend_url}/products/${id}`, {
                   method: 'DELETE',
                   headers: {
                     'content-type': 'application/json'
@@ -92,9 +89,7 @@ class App extends React.Component {
 
 
         updateProduct = (product)=>{
-                const url = "http://13.58.204.144:3000"
-
-          fetch(`http://13.58.204.144:3001/products/${product.id}`, {
+          fetch(`${this.backend_url}/products/${product.id}`, {
                    method: 'PATCH',
                    headers: {
                            'content-type': 'application/json'
